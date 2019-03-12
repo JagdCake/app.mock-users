@@ -1,7 +1,11 @@
-<nav class="p-2 bg-black text-white">
+<nav class="p-2 bg-black text-white flex justify-between">
     <h1 class="text-xl">
         <a class="text-white no-underline" routerLink="/">{{ title }}</a>
     </h1>
+
+    <section>
+        <a class="text-white no-underline" routerLink="/dashboard">Dashboard</a>
+    </section>
 </nav>
 
 <router-outlet></router-outlet>
