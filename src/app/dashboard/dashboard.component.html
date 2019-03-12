@@ -1,3 +1,9 @@
-<p>
-  dashboard works!
-</p>
+<article>
+    <ul>
+        <li *ngFor="let user of users">
+            <p>Name:&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
+            <p>Age:&nbsp;{{ user.age }}</p>
+            <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex }}</p>
+        </li>
+    </ul>
+</article>
