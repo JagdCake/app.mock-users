@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { User } from './user';
 
@@ -20,7 +21,10 @@ export class UserService {
     }
 
     getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.usersUrl);
+        return this.http.get<User[]>(this.usersUrl)
+            .pipe(
+                catchError(this.handleError([]))
+            );
     }
 
     constructor(private http: HttpClient) { }
