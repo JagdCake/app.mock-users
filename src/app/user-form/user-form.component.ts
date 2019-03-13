@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+
+    user = new FormGroup({
+        first_name: new FormControl(''),
+        last_name: new FormControl(''),
+        age: new FormControl(''),
+        sex: new FormControl(''),
+    });
 
   constructor() { }
 
