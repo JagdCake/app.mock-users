@@ -1,6 +1,6 @@
 <main>
-    <ul class="list-reset">
-        <li *ngFor="let user of users">
+    <ul class="list-reset flex flex-wrap justify-center lg:justify-start">
+        <li *ngFor="let user of users" class="w-64 bg-blue m-4 p-4 text-right">
             <p>Name:&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
             <p>Age:&nbsp;{{ user.age }}</p>
             <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex }}</p>
