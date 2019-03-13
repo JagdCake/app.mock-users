@@ -10,6 +10,23 @@ const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const placeholderUsers = [
+    {
+        id: 1,
+        first_name: 'Ethelbert',
+        last_name: 'Swinfon',
+        age: 30,
+        sex: 'Male',
+    },
+    {
+        id: 2,
+        first_name: 'Pepi',
+        last_name: 'Spira',
+        age: 30,
+        sex: 'Female',
+    }
+];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +46,7 @@ export class UserService {
         return this.http.get<User[]>(this.usersUrl)
             .pipe(
                 retry(2),
-                catchError(this.handleError([]))
+                catchError(this.handleError(placeholderUsers))
             );
     }
 
