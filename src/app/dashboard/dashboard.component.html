@@ -1,5 +1,5 @@
-<article>
-    <ul>
+<main>
+    <ul class="list-reset">
         <li *ngFor="let user of users">
             <p>Name:&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
             <p>Age:&nbsp;{{ user.age }}</p>
@@ -7,4 +7,4 @@
             <button class="bg-red text-white p-2 m-2" (click)="deleteUser(user.id)">Delete</button>
         </li>
     </ul>
-</article>
+</main>
