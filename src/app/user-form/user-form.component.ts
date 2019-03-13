@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+import { UserService } from '../user.service';
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -15,9 +17,9 @@ export class UserFormComponent implements OnInit {
         sex: new FormControl(''),
     });
 
-  constructor() { }
+    constructor(private userService: UserService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
