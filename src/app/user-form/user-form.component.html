@@ -1,3 +1,27 @@
-<p>
-  user-form works!
-</p>
+<form class="mx-auto text-center text-2xl" [formGroup]="user" (ngSubmit)="add()">
+    <div class="m-4">
+        <label for="first-name">First name</label>
+        <input id="first-name" type="text" formControlName="first_name" name="first_name" required>
+    </div>
+
+    <div class="m-4">
+        <label for="last-name">Last name</label>
+        <input id="last-name" type="text" formControlName="last_name" name="last_name" required>
+    </div>
+
+    <div class="m-4">
+        <label for="age">Age</label>
+        <input id="age" type="number" formControlName="age" name="age" required>
+    </div>
+
+    <div class="m-4">
+        <label for="sex">Sex</label>
+        <select id="sex" formControlName="sex" name="sex">
+            <option value=""></option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+         </select>
+    </div>
+
+    <button type="submit">Add user</button>
+</form>
