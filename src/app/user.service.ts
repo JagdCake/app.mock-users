@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { User } from './user';
+import { ApiResponse } from './api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,13 @@ export class UserService {
             );
     }
 
-    constructor(private http: HttpClient) { }
+    addUser(user: User): Observable<ApiResponse> {
+        return this.http.post<ApiResponse>(this.usersUrl, user, httpOptions)
+            .pipe(
+                catchError(this.handleError({message: 'No response from API'}))
+            );
+    }
+
+    constructor(private http: HttpClient) {
+    }
 }
