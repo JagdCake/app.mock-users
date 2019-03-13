@@ -57,6 +57,15 @@ export class UserService {
             );
     }
 
+    deleteUser(userId: number): Observable<ApiResponse> {
+        const url = `${this.usersUrl}/${userId}/`;
+
+        return this.http.delete<ApiResponse>(url, httpOptions)
+            .pipe(
+                catchError(this.handleError({message: 'No response from API'}))
+            );
+    }
+
     constructor(private http: HttpClient) {
     }
 }
