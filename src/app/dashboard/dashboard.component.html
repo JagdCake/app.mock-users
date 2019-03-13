@@ -6,7 +6,9 @@
                 <p>{{ user.first_name }} {{ user.last_name }}</p>
                 <p>Age:&nbsp;{{ user.age }}</p>
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex }}</p>
-                <button class="bg-red text-white p-2 m-2" (click)="deleteUser(user.id)">Delete</button>
+                <div class="mt-4">
+                    <button class="bg-red text-black p-2 ml-2" (click)="deleteUser(user.id)">Delete</button>
+                </div>
             </section>
         </li>
     </ul>
