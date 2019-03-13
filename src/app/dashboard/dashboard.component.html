@@ -1,10 +1,13 @@
 <main>
     <ul class="list-reset flex flex-wrap justify-center lg:justify-start">
-        <li *ngFor="let user of users" class="w-64 bg-blue m-4 p-4 text-right">
-            <p>Name:&nbsp;{{ user.first_name }}&nbsp;{{ user.last_name }}</p>
-            <p>Age:&nbsp;{{ user.age }}</p>
-            <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex }}</p>
-            <button class="bg-red text-white p-2 m-2" (click)="deleteUser(user.id)">Delete</button>
+        <li *ngFor="let user of users" class="w-64 bg-blue m-4 p-4 text-right flex justify-between">
+            <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
+            <section class="border-l-2 p-2">
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                <p>Age:&nbsp;{{ user.age }}</p>
+                <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex }}</p>
+                <button class="bg-red text-white p-2 m-2" (click)="deleteUser(user.id)">Delete</button>
+            </section>
         </li>
     </ul>
 </main>
