@@ -47,10 +47,6 @@ export class UserFormComponent implements OnInit {
     }
 
     add(): void {
-        if (this.userForm.invalid) {
-            return;
-        }
-
         this.userService.addUser(this.userForm.value)
             .subscribe((response: ApiResponse) => console.log(response.message));
     }
@@ -58,6 +54,18 @@ export class UserFormComponent implements OnInit {
     edit(): void {
         this.userService.editUser(this.userId, this.userForm.value)
             .subscribe((response: ApiResponse) => console.log(response.message));
+    }
+
+    addOrEdit(): void {
+        if (this.userForm.invalid) {
+            return;
+        }
+
+        if (this.isEditRoute) {
+            this.edit();
+        } else {
+            this.add();
+        }
     }
 
     constructor(

@@ -1,4 +1,4 @@
-<form class="mx-auto text-center text-2xl" [formGroup]="userForm" (ngSubmit)="add()">
+<form class="mx-auto text-center text-2xl" [formGroup]="userForm" (ngSubmit)="addOrEdit()">
     <div class="m-4">
         <label for="first-name">First name</label>
         <input class="border-2" id="first-name" type="text" formControlName="first_name" name="first_name" [class.border-red]="firstName.invalid && firstName.touched" required>
