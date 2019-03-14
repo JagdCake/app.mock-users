@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 import { UserService } from '../user.service';
 import { ApiResponse } from '../api-response';
@@ -11,19 +11,22 @@ import { ApiResponse } from '../api-response';
 })
 export class UserFormComponent implements OnInit {
 
-    user = new FormGroup({
-        first_name: new FormControl(''),
-        last_name: new FormControl(''),
-        age: new FormControl(''),
-        sex: new FormControl(''),
+    userForm = this.fb.group({
+        first_name: [''],
+        last_name: [''],
+        age: [''],
+        sex: [''],
     });
 
     add(): void {
-        this.userService.addUser(this.user.value)
+        this.userService.addUser(this.userForm.value)
             .subscribe((response: ApiResponse) => console.log(response.message));
     }
 
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private fb: FormBuilder
+    ) { }
 
     ngOnInit() {
     }
