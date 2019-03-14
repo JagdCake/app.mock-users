@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { ApiResponse } from '../api-response';
@@ -47,7 +48,8 @@ export class UserFormComponent implements OnInit {
 
     constructor(
         private userService: UserService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
