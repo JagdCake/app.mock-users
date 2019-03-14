@@ -5,9 +5,17 @@ import { catchError, retry } from 'rxjs/operators';
 
 import { User } from './user';
 import { ApiResponse } from './api-response';
+import { privateEnv } from '../environments/environment.private';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+const headersPost = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-AUTH-TOKEN': privateEnv.apiKey
+    }),
+};
+
+const headersGet = {
+    headers: new HttpHeaders({ 'X-AUTH-TOKEN': privateEnv.apiKey })
 };
 
 const placeholderUsers = [
@@ -43,7 +51,7 @@ export class UserService {
     }
 
     getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.usersUrl)
+        return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
                 retry(2),
                 catchError(this.handleError(placeholderUsers))
@@ -51,7 +59,7 @@ export class UserService {
     }
 
     addUser(user: User): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(this.usersUrl, user, httpOptions)
+        return this.http.post<ApiResponse>(this.usersUrl, user, headersPost)
             .pipe(
                 catchError(this.handleError({message: 'No response from API'}))
             );
@@ -60,7 +68,7 @@ export class UserService {
     deleteUser(userId: number): Observable<ApiResponse> {
         const url = `${this.usersUrl}/${userId}/`;
 
-        return this.http.delete<ApiResponse>(url, httpOptions)
+        return this.http.delete<ApiResponse>(url, headersPost)
             .pipe(
                 catchError(this.handleError({message: 'No response from API'}))
             );
