@@ -75,6 +75,15 @@ export class UserService {
             );
     }
 
+    editUser(userId: number, user: User): Observable<ApiResponse> {
+        const url = `${this.usersUrl}/${userId}`;
+
+        return this.http.put<ApiResponse>(url, user, headersPost)
+            .pipe(
+                catchError(this.handleError({message: 'No response from API'}))
+            );
+    }
+
     deleteUser(userId: number): Observable<ApiResponse> {
         const url = `${this.usersUrl}/${userId}/`;
 
