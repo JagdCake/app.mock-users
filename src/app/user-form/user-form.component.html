@@ -1,22 +1,22 @@
 <form class="mx-auto text-center text-2xl" [formGroup]="userForm" (ngSubmit)="add()">
     <div class="m-4">
         <label for="first-name">First name</label>
-        <input id="first-name" type="text" formControlName="first_name" name="first_name" required>
+        <input class="border-2" id="first-name" type="text" formControlName="first_name" name="first_name" [class.border-red]="firstName.invalid && firstName.touched" required>
     </div>
 
     <div class="m-4">
         <label for="last-name">Last name</label>
-        <input id="last-name" type="text" formControlName="last_name" name="last_name" required>
+        <input class="border-2" id="last-name" type="text" formControlName="last_name" name="last_name" [class.bg-red]="lastName.invalid && lastName.touched" required >
     </div>
 
     <div class="m-4">
         <label for="age">Age</label>
-        <input id="age" type="number" formControlName="age" name="age" required>
+        <input class="border-2" id="age" type="number" formControlName="age" name="age" [class.bg-red]="age.invalid && age.touched" required>
     </div>
 
     <div class="m-4">
         <label for="sex">Sex</label>
-        <select id="sex" formControlName="sex" name="sex">
+        <select class="border-2" id="sex" formControlName="sex" name="sex">
             <option value=""></option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
