@@ -55,6 +55,11 @@ export class UserFormComponent implements OnInit {
             .subscribe((response: ApiResponse) => console.log(response.message));
     }
 
+    edit(): void {
+        this.userService.editUser(this.userId, this.userForm.value)
+            .subscribe((response: ApiResponse) => console.log(response.message));
+    }
+
     constructor(
         private userService: UserService,
         private fb: FormBuilder,
