@@ -30,7 +30,10 @@ export class UserFormComponent implements OnInit {
                 Validators.max(120),
             ]
         ],
-        sex: [''],
+        sex: ['', [
+                Validators.pattern('^(Male|Female)$')
+            ]
+        ],
     });
 
     add(): void {
