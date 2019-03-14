@@ -19,6 +19,10 @@ export class UserFormComponent implements OnInit {
     });
 
     add(): void {
+        if (this.userForm.invalid) {
+            return;
+        }
+
         this.userService.addUser(this.userForm.value)
             .subscribe((response: ApiResponse) => console.log(response.message));
     }
