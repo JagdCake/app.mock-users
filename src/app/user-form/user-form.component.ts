@@ -53,4 +53,15 @@ export class UserFormComponent implements OnInit {
     ngOnInit() {
     }
 
+    get firstName() {
+        return this.userForm.get('first_name');
+    }
+
+    get lastName() {
+        return this.userForm.get('last_name');
+    }
+
+    get age() {
+        return this.userForm.get('age');
+    }
 }
