@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'dashboard/user/:id/edit',
         component: UserFormComponent,
     },
+    {
+        path: '**',
+        redirectTo: 'dashboard',
+    },
 ];
 
 @NgModule({
