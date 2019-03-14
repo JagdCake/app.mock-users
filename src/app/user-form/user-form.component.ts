@@ -12,8 +12,18 @@ import { ApiResponse } from '../api-response';
 export class UserFormComponent implements OnInit {
 
     userForm = this.fb.group({
-        first_name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
-        last_name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+        first_name: ['', [
+                Validators.required,
+                Validators.pattern('[a-zA-Z ]+'),
+                Validators.maxLength((50))
+            ]
+        ],
+        last_name: ['', [
+                Validators.required,
+                Validators.pattern('[a-zA-Z ]+'),
+                Validators.maxLength((50))
+            ]
+        ],
         age: [''],
         sex: [''],
     });
