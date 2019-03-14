@@ -8,6 +8,7 @@
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
                 <div class="mt-4">
                     <button class="bg-red text-black p-2 mr-2" (click)="deleteUser(user.id); user.selectedIndex = i">Delete</button>
+                    <a class="bg-yellow font-bold p-2 ml-2 text-black no-underline" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
                 </div>
             </section>
         </li>

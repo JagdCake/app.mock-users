@@ -17,6 +17,10 @@ const routes: Routes = [
         path: 'dashboard/user/add',
         component: UserFormComponent,
     },
+    {
+        path: 'dashboard/user/:id/edit',
+        component: UserFormComponent,
+    },
 ];
 
 @NgModule({
