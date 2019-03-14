@@ -12,6 +12,7 @@ import { ApiResponse } from '../api-response';
 })
 export class UserFormComponent implements OnInit {
 
+    formButton = 'Add';
     isEditRoute: boolean;
     userId: number;
 
@@ -60,6 +61,7 @@ export class UserFormComponent implements OnInit {
 
         if (this.isEditRoute) {
             this.userId = +this.route.snapshot.paramMap.get('id');
+            this.formButton = 'Edit';
         }
     }
 
