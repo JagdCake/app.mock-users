@@ -24,7 +24,12 @@ export class UserFormComponent implements OnInit {
                 Validators.maxLength((50))
             ]
         ],
-        age: [''],
+        age: [18, [
+                Validators.required,
+                Validators.min(0),
+                Validators.max(120),
+            ]
+        ],
         sex: [''],
     });
 
