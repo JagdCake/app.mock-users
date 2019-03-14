@@ -58,6 +58,16 @@ export class UserService {
             );
     }
 
+    getUser(userId: number): Observable<User> {
+        const url = `${this.usersUrl}/${userId}`;
+
+        return this.http.get<User>(url, headersGet)
+            .pipe(
+                retry(2),
+                catchError(this.handleError(placeholderUsers[0]))
+            );
+    }
+
     addUser(user: User): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(this.usersUrl, user, headersPost)
             .pipe(
