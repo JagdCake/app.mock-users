@@ -12,6 +12,9 @@ import { ApiResponse } from '../api-response';
 })
 export class UserFormComponent implements OnInit {
 
+    isEditRoute: boolean;
+    userId: number;
+
     userForm = this.fb.group({
         first_name: ['', [
                 Validators.required,
@@ -52,7 +55,12 @@ export class UserFormComponent implements OnInit {
         private route: ActivatedRoute
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.isEditRoute = this.route.snapshot.paramMap.has('id');
+
+        if (this.isEditRoute) {
+            this.userId = +this.route.snapshot.paramMap.get('id');
+        }
     }
 
     get firstName() {
