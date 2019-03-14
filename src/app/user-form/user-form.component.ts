@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { UserService } from '../user.service';
 import { ApiResponse } from '../api-response';
@@ -12,8 +12,8 @@ import { ApiResponse } from '../api-response';
 export class UserFormComponent implements OnInit {
 
     userForm = this.fb.group({
-        first_name: [''],
-        last_name: [''],
+        first_name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
+        last_name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]+')]],
         age: [''],
         sex: [''],
     });
