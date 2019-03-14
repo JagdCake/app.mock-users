@@ -41,6 +41,11 @@ export class UserFormComponent implements OnInit {
         ],
     });
 
+    show(): void {
+        this.userService.getUser(this.userId)
+            .subscribe((user) => this.userForm.setValue(user));
+    }
+
     add(): void {
         if (this.userForm.invalid) {
             return;
@@ -61,6 +66,7 @@ export class UserFormComponent implements OnInit {
 
         if (this.isEditRoute) {
             this.userId = +this.route.snapshot.paramMap.get('id');
+            this.show();
             this.formButton = 'Edit';
         }
     }
