@@ -3,11 +3,11 @@
         <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i" class="w-64 bg-blue m-4 p-4 text-right flex justify-between">
             <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
             <section class="border-l-2 p-2">
-                <p>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
+                <p #fullName>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
                 <p>Age:&nbsp;{{ user.age }}</p>
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
                 <div class="mt-4">
-                    <button class="bg-red text-black p-2 mr-2" (click)="deleteUser(user.id); user.selectedIndex = i">Delete</button>
+                    <button class="bg-red text-black p-2 mr-2" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
                     <a class="bg-yellow font-bold p-2 ml-2 text-black no-underline" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
                 </div>
             </section>
