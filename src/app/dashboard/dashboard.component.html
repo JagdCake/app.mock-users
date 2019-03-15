@@ -23,7 +23,7 @@
     </article>
 </main>
 
-<article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="bg-yellow p-4 max-w-xs text-center shadow fixed pin">
+<article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="bg-black p-4 max-w-xs text-white text-center shadow fixed pin">
     <h1>Delete {{ name }}?</h1>
     <button class="bg-red text-black p-2 m-2 rounded" (click)="deleteUser()">Yes</button>
     <button class="bg-blue text-black p-2 m-2 rounded" (click)="userId = null">No</button>
