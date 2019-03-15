@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     userId = null;
     name: string;
 
-    itemsPerPage = 24;
+    itemsPerPage = 18;
     page: number;
     pages: number;
 
