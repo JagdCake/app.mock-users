@@ -15,8 +15,8 @@
     </ul>
 </main>
 
-<article *ngIf="userId && userId !== 'deleted'" class="fixed pin">
+<article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="bg-yellow p-4 max-w-xs text-center shadow fixed pin">
     <h1>Delete {{ name }}?</h1>
-        <button (click)="deleteUser()">Yes</button>
-        <button (click)="userId = null">No</button>
+    <button class="bg-red text-black p-2 m-2" (click)="deleteUser()">Yes</button>
+    <button class="bg-blue text-black p-2 m-2" (click)="userId = null">No</button>
 </article>
