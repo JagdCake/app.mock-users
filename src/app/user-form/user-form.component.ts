@@ -19,13 +19,13 @@ export class UserFormComponent implements OnInit {
         first_name: ['', [
                 Validators.required,
                 Validators.pattern('[a-zA-Z ]+'),
-                Validators.maxLength((50))
+                Validators.maxLength((20))
             ]
         ],
         last_name: ['', [
                 Validators.required,
                 Validators.pattern('[a-zA-Z ]+'),
-                Validators.maxLength((50))
+                Validators.maxLength((20))
             ]
         ],
         age: [18, [
