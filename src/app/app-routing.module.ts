@@ -7,10 +7,14 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'dashboard',
+        redirectTo: 'dashboard/1',
     },
     {
         path: 'dashboard',
+        redirectTo: 'dashboard/1',
+    },
+    {
+        path: 'dashboard/:page',
         component: DashboardComponent,
     },
     {
