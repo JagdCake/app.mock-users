@@ -1,6 +1,6 @@
 <main>
     <ul class="list-reset flex flex-wrap justify-center md:justify-between">
-        <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue rounded-t-lg shadow m-4 p-4 text-right flex justify-between">
+        <li *ngFor="let user of users; let i = index" [class.invisible]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue rounded-t-lg shadow m-4 p-4 text-right flex justify-between">
             <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
             <section class="border-l-2 p-2">
                 <p class="break-word" #fullName>
