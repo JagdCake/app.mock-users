@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
     page: number;
     pages: number;
 
-    paginate(page: number, itemsPerPage = this.itemsPerPage): object {
+    paginate(page: number, itemsPerPage = this.itemsPerPage): any {
         const theLastIndex = page * itemsPerPage;
 
         if (page === 1) {
@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit {
 
     deleteUser(): void {
         this.userService.deleteUser(this.userId)
-            .subscribe((response) => console.log(response.body.message));
+            .subscribe((response) => console.log(response.body));
 
         this.userId = 'deleted';
     }

@@ -48,7 +48,7 @@ export class UserFormComponent implements OnInit {
     add(): void {
         this.userService.addUser(this.userForm.value)
             .subscribe((response) => {
-                console.log(response.body.message)
+                console.log(response.body);
 
                 if (response.status === 201) {
                     this.userForm.reset();
@@ -59,7 +59,7 @@ export class UserFormComponent implements OnInit {
     edit(): void {
         this.userService.editUser(this.userId, this.userForm.value)
             .subscribe((response) => {
-                console.log(response.body.message)
+                console.log(response.body);
 
                 if (response.status === 200) {
                     this.router.navigate(['dashboard']);
