@@ -8,13 +8,13 @@ import { User } from './user';
 import { privateEnv } from '../environments/environment.private';
 import { MessagesService } from './messages.service';
 
-const httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'X-AUTH-TOKEN': privateEnv.apiKey
-    }),
-    observe: 'response',
-};
+// const httpOptions = {
+    // headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        // 'X-AUTH-TOKEN': privateEnv.apiKey
+    // }),
+    // observe: 'response',
+// };
 
 const headersGet = {
     headers: new HttpHeaders({ 'X-AUTH-TOKEN': privateEnv.apiKey })
@@ -77,7 +77,12 @@ export class UserService {
     }
 
     addUser(user: User): Observable<HttpResponse<object>> {
-        return this.http.post<HttpResponse<object>>(this.usersUrl, user, httpOptions)
+        return this.http.post<HttpResponse<object>>(this.usersUrl, user, {headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': privateEnv.apiKey
+            }),
+                observe: 'response',
+            })
             .pipe(
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not add user'))
             );
@@ -86,7 +91,12 @@ export class UserService {
     editUser(userId: number, user: User): Observable<HttpResponse<object>> {
         const url = `${this.usersUrl}/${userId}`;
 
-        return this.http.put<HttpResponse<object>>(url, user, httpOptions)
+        return this.http.put<HttpResponse<object>>(url, user, {headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': privateEnv.apiKey
+            }),
+                observe: 'response',
+            })
             .pipe(
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not edit user'))
             );
@@ -95,7 +105,12 @@ export class UserService {
     deleteUser(userId: number): Observable<HttpResponse<object>> {
         const url = `${this.usersUrl}/${userId}/`;
 
-        return this.http.delete<HttpResponse<object>>(url, httpOptions)
+        return this.http.delete<HttpResponse<object>>(url, {headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'X-AUTH-TOKEN': privateEnv.apiKey
+            }),
+                observe: 'response',
+            })
             .pipe(
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not delete user'))
             );
