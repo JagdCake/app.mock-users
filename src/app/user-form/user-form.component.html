@@ -2,17 +2,20 @@
     <form class="mx-auto text-left text-2xl" [formGroup]="userForm" (ngSubmit)="addOrEdit()">
         <section class="m-4">
             <label class="block mb-2" for="first-name">First name</label>
+            <p class="my-1 text-base opacity-75">Letters and spaces only!</p>
             <input class="border-2 bg-transparent text-black w-64" id="first-name" type="text" formControlName="first_name" name="first_name" [class.border-red]="firstName.invalid && firstName.touched" required>
         </section>
 
         <section class="m-4">
             <label class="block mb-2" for="last-name">Last name</label>
-            <input class="border-2 bg-transparent text-black w-64" id="last-name" type="text" formControlName="last_name" name="last_name" [class.bg-red]="lastName.invalid && lastName.touched" required >
+            <p class="my-1 text-base opacity-75">Letters and spaces only!</p>
+            <input class="border-2 bg-transparent text-black w-64" id="last-name" type="text" formControlName="last_name" name="last_name" [class.border-red]="lastName.invalid && lastName.touched" required >
         </section>
 
         <section class="m-4">
             <label class="block mb-2" for="age">Age</label>
-            <input class="border-2 w-16 bg-transparent text-black" id="age" type="number" formControlName="age" name="age" [class.bg-red]="age.invalid && age.touched" required>
+            <p class="my-1 text-base opacity-75">Number between 0 and 120!</p>
+            <input class="border-2 w-16 bg-transparent text-black" id="age" type="number" formControlName="age" name="age" [class.border-red]="age.invalid && age.touched" required>
         </section>
 
         <section class="m-4">
