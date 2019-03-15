@@ -13,6 +13,11 @@
             </section>
         </li>
     </ul>
+
+    <article class="mt-8 text-center">
+        <a *ngIf="page > 1" href="/dashboard/{{ page - 1 }}" class="bg-black rounded-t-full text-white no-underline p-4 m-2 pointer">Prev</a>
+        <a *ngIf="page !== pages" href="/dashboard/{{ page + 1 }}" class="bg-black rounded-t-full text-white no-underline p-4 m-2 pointer">Next</a>
+    </article>
 </main>
 
 <article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="bg-yellow p-4 max-w-xs text-center shadow fixed pin">
