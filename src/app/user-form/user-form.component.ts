@@ -47,7 +47,13 @@ export class UserFormComponent implements OnInit {
 
     add(): void {
         this.userService.addUser(this.userForm.value)
-            .subscribe((response) => console.log(response.body.message));
+            .subscribe((response) => {
+                console.log(response.body.message)
+
+                if (response.status === 201) {
+                    this.userForm.reset();
+                }
+            });
     }
 
     edit(): void {
