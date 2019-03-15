@@ -1,14 +1,14 @@
 <main>
     <ul class="list-reset flex flex-wrap justify-center md:justify-between">
-        <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue m-4 p-4 text-right flex justify-between">
+        <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue rounded-t-lg shadow m-4 p-4 text-right flex justify-between">
             <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
             <section class="border-l-2 p-2">
                 <p #fullName>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
                 <p>Age:&nbsp;{{ user.age }}</p>
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
                 <div class="mt-4">
-                    <button class="bg-red text-black p-2 mr-2" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
-                    <a class="bg-yellow font-bold p-2 ml-2 text-black no-underline" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
+                    <button class="bg-red text-black p-2 mr-2 rounded" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
+                    <a class="bg-yellow font-bold p-2 ml-2 text-black no-underline rounded" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
                 </div>
             </section>
         </li>
@@ -25,6 +25,6 @@
 
 <article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="bg-yellow p-4 max-w-xs text-center shadow fixed pin">
     <h1>Delete {{ name }}?</h1>
-    <button class="bg-red text-black p-2 m-2" (click)="deleteUser()">Yes</button>
-    <button class="bg-blue text-black p-2 m-2" (click)="userId = null">No</button>
+    <button class="bg-red text-black p-2 m-2 rounded" (click)="deleteUser()">Yes</button>
+    <button class="bg-blue text-black p-2 m-2 rounded" (click)="userId = null">No</button>
 </article>

@@ -3,30 +3,30 @@
         <section class="m-4">
             <label class="block mb-2" for="first-name">First name</label>
             <p class="my-1 text-base opacity-75">Letters and spaces only!</p>
-            <input class="border-2 bg-transparent text-black w-64" id="first-name" type="text" formControlName="first_name" name="first_name" [class.border-red]="firstName.invalid && firstName.touched" required>
+            <input class="border-2 bg-transparent text-black w-64 rounded-t-sm" id="first-name" type="text" formControlName="first_name" name="first_name" [class.border-red]="firstName.invalid && firstName.touched" required>
         </section>
 
         <section class="m-4">
             <label class="block mb-2" for="last-name">Last name</label>
             <p class="my-1 text-base opacity-75">Letters and spaces only!</p>
-            <input class="border-2 bg-transparent text-black w-64" id="last-name" type="text" formControlName="last_name" name="last_name" [class.border-red]="lastName.invalid && lastName.touched" required >
+            <input class="border-2 bg-transparent text-black w-64 rounded-t-sm" id="last-name" type="text" formControlName="last_name" name="last_name" [class.border-red]="lastName.invalid && lastName.touched" required >
         </section>
 
         <section class="m-4">
             <label class="block mb-2" for="age">Age</label>
             <p class="my-1 text-base opacity-75">Number between 0 and 120!</p>
-            <input class="border-2 w-16 bg-transparent text-black" id="age" type="number" formControlName="age" name="age" [class.border-red]="age.invalid && age.touched" required>
+            <input class="border-2 w-16 bg-transparent text-black rounded-t-sm" id="age" type="number" formControlName="age" name="age" [class.border-red]="age.invalid && age.touched" required>
         </section>
 
         <section class="m-4">
             <label class="block mb-2" for="sex">Sex</label>
-            <select class="border-2 bg-transparent text-black" id="sex" formControlName="sex" name="sex">
+            <select class="border-2 bg-transparent text-black rounded-t-sm" id="sex" formControlName="sex" name="sex">
                 <option value=""></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
              </select>
         </section>
 
-        <button class="m-4 p-2 bg-black text-white" [class.opacity-25]="userForm.invalid" type="submit">{{ formButton }} user</button>
+        <button class="m-4 p-2 bg-black text-white rounded" [class.opacity-25]="userForm.invalid" type="submit">{{ formButton }} user</button>
     </form>
 </main>
