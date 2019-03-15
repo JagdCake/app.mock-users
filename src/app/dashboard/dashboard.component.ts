@@ -3,7 +3,6 @@ import { trigger, style, animate, transition } from '@angular/animations';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
-import { ApiResponse } from '../api-response';
 
 @Component({
     selector: 'app-dashboard',
@@ -49,7 +48,7 @@ export class DashboardComponent implements OnInit {
 
     deleteUser(): void {
         this.userService.deleteUser(this.userId)
-            .subscribe((response: ApiResponse) => console.log(response.message));
+            .subscribe((response) => console.log(response.body.message));
 
         this.userId = 'deleted';
     }

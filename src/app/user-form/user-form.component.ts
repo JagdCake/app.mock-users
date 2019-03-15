@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../user.service';
-import { ApiResponse } from '../api-response';
 
 @Component({
   selector: 'app-user-form',
@@ -48,12 +47,12 @@ export class UserFormComponent implements OnInit {
 
     add(): void {
         this.userService.addUser(this.userForm.value)
-            .subscribe((response: ApiResponse) => console.log(response.message));
+            .subscribe((response) => console.log(response.body.message));
     }
 
     edit(): void {
         this.userService.editUser(this.userId, this.userForm.value)
-            .subscribe((response: ApiResponse) => console.log(response.message));
+            .subscribe((response) => console.log(response.body.message));
     }
 
     addOrEdit(): void {
