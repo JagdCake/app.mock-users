@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
@@ -62,12 +63,19 @@ export class DashboardComponent implements OnInit {
         };
     }
 
+    goBackIfNoUsers(): void {
+        if (this.page <= 0 || this.page > this.pages) {
+            this.location.back();
+        }
+    }
+
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
         .subscribe((users) => {
-            this.users = users.slice(fromIndex, toIndex)
+            this.users = users.slice(fromIndex, toIndex);
 
             this.pages = Math.round(users.length / this.itemsPerPage);
+            this.goBackIfNoUsers();
         });
     }
 
@@ -85,7 +93,8 @@ export class DashboardComponent implements OnInit {
 
     constructor(
         private userService: UserService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private location: Location
     ) { }
 
     ngOnInit() {
