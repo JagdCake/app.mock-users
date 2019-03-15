@@ -42,7 +42,11 @@ export class DashboardComponent implements OnInit {
     userId = null;
     name: string;
 
-    paginate(page: number, itemsPerPage = 12): object {
+    itemsPerPage = 24;
+    page: number;
+    pages: number;
+
+    paginate(page: number, itemsPerPage = this.itemsPerPage): object {
         const theLastIndex = page * itemsPerPage;
 
         if (page === 1) {
@@ -60,7 +64,11 @@ export class DashboardComponent implements OnInit {
 
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
-            .subscribe((users) => this.users = users.slice(fromIndex, toIndex));
+        .subscribe((users) => {
+            this.users = users.slice(fromIndex, toIndex)
+
+            this.pages = Math.round(users.length / this.itemsPerPage);
+        });
     }
 
     deleteUser(): void {
@@ -81,8 +89,8 @@ export class DashboardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        const page = +this.route.snapshot.paramMap.get('page');
-        const pagination = this.paginate(page);
+        this.page = +this.route.snapshot.paramMap.get('page');
+        const pagination = this.paginate(this.page);
         this.getUsers(pagination.startIndex, pagination.lastIndex);
     }
 
