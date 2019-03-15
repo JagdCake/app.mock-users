@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
@@ -74,7 +75,10 @@ export class DashboardComponent implements OnInit {
         this.name = name;
     }
 
-    constructor(private userService: UserService) { }
+    constructor(
+        private userService: UserService,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit() {
         this.getUsers();
