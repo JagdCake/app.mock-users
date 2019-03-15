@@ -1,6 +1,6 @@
 <article class="text-white">
     <h1 class="text-base">Message log:</h1>
-    <button class="bg-green text-black p-2 m-2 ml-0 rounded" (click)="messageService.clear()">Clear log</button>
+    <button class="bg-green text-black p-2 m-2 ml-0 rounded opacity-25" [class.opacity-100]="messageService.messages.length > 0" (click)="messageService.clear()">Clear log</button>
 
     <p class="m-2" *ngFor="let message of messageService.messages">{{ message }}</p>
 </article>
