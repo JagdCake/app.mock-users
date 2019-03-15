@@ -1,6 +1,6 @@
 <main>
     <ul class="list-reset flex flex-wrap justify-center lg:justify-start">
-        <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i" class="w-64 bg-blue m-4 p-4 text-right flex justify-between">
+        <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue m-4 p-4 text-right flex justify-between">
             <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
             <section class="border-l-2 p-2">
                 <p #fullName>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
@@ -14,3 +14,9 @@
         </li>
     </ul>
 </main>
+
+<article *ngIf="userId && userId !== 'deleted'" class="fixed pin">
+    <h1>Delete {{ name }}?</h1>
+        <button (click)="deleteUser()">Yes</button>
+        <button (click)="userId = null">No</button>
+</article>
