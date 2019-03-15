@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
     userId = null;
     name: string;
 
-    paginate(page: number, itemsPerPage = 10): object {
+    paginate(page: number, itemsPerPage = 12): object {
         const theLastIndex = page * itemsPerPage;
 
         if (page === 1) {
