@@ -6,6 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 import { User } from './user';
 import { privateEnv } from '../environments/environment.private';
+import { MessagesService } from './messages.service';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -43,9 +44,11 @@ export class UserService {
 
     private usersUrl = 'http://127.0.0.1:8000/mock_users';
 
-    private handleError<T>(runAway = false, newResult ?: T) {
+    private handleError<T>(runAway = false, message = 'Something happened', newResult ?: T) {
         return (error: any): Observable<T> => {
             console.error(error.message);
+
+            this.messageService.add(message);
 
             if (!runAway) {
                 return of(newResult as T);
@@ -100,7 +103,8 @@ export class UserService {
 
     constructor(
         private http: HttpClient,
-        private router: Router
+        private router: Router,
+        private messageService: MessagesService
     ) {
     }
 }
