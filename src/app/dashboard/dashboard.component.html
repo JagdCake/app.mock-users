@@ -7,7 +7,7 @@
                     <strong>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</strong>
                 </p>
                 <p>Age:&nbsp;{{ user.age }}</p>
-                <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
+                <p>{{ user.sex || '&nbsp;' | titlecase }}</p>
                 <div class="mt-4">
                     <button class="bg-red-light text-black p-2 mr-2 rounded" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
                     <a class="bg-yellow-dark font-bold p-2 ml-2 text-black no-underline rounded relative pin-b" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
