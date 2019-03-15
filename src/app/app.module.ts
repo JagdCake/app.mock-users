@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         DashboardComponent,
         UserFormComponent,
+        MessagesComponent,
     ],
     imports: [
         BrowserModule,
