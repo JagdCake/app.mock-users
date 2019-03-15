@@ -41,9 +41,25 @@ export class DashboardComponent implements OnInit {
     userId = null;
     name: string;
 
-    getUsers(): void {
+    paginate(page: number, itemsPerPage = 10): object {
+        const theLastIndex = page * itemsPerPage;
+
+        if (page === 1) {
+            return {
+                startIndex: 0,
+                lastIndex: theLastIndex,
+            };
+        }
+
+        return {
+            startIndex: (theLastIndex - itemsPerPage),
+            lastIndex: theLastIndex,
+        };
+    }
+
+    getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
-            .subscribe((users) => this.users = users);
+            .subscribe((users) => this.users = users.slice(fromIndex, toIndex));
     }
 
     deleteUser(): void {
