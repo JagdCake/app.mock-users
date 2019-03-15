@@ -62,7 +62,7 @@ export class UserService {
         return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
                 retry(2),
-                catchError(this.handleError(false, placeholderUsers))
+                catchError(this.handleError(false, 'Could not find all users', placeholderUsers))
             );
     }
 
@@ -72,14 +72,14 @@ export class UserService {
         return this.http.get<User>(url, headersGet)
             .pipe(
                 retry(2),
-                catchError(this.handleError(true, placeholderUsers[0]))
+                catchError(this.handleError(true, 'User not found', placeholderUsers[0]))
             );
     }
 
     addUser(user: User): Observable<HttpResponse<object>> {
         return this.http.post<HttpResponse<object>>(this.usersUrl, user, httpOptions)
             .pipe(
-                catchError(this.handleError<HttpResponse<object>>())
+                catchError(this.handleError<HttpResponse<object>>(false, 'Could not add user'))
             );
     }
 
@@ -88,7 +88,7 @@ export class UserService {
 
         return this.http.put<HttpResponse<object>>(url, user, httpOptions)
             .pipe(
-                catchError(this.handleError<HttpResponse<object>>())
+                catchError(this.handleError<HttpResponse<object>>(false, 'Could not edit user'))
             );
     }
 
@@ -97,7 +97,7 @@ export class UserService {
 
         return this.http.delete<HttpResponse<object>>(url, httpOptions)
             .pipe(
-                catchError(this.handleError<HttpResponse<object>>())
+                catchError(this.handleError<HttpResponse<object>>(false, 'Could not delete user'))
             );
     }
 
