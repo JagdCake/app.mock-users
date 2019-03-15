@@ -3,7 +3,7 @@
         <li *ngFor="let user of users; let i = index" [class.opacity-25]="user.selectedIndex === i && userId === 'deleted'" class="w-64 bg-blue rounded-t-lg shadow m-4 p-4 text-right flex justify-between">
             <img class="flex-no-shrink w-16 h-16 bg-gray border-b-2" src="assets/images/user.svg" alt="picture of {{ user.first_name }}">
             <section class="border-l-2 p-2">
-                <p #fullName>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
+                <p class="break-word" #fullName>{{ user.first_name | titlecase }} {{ user.last_name | titlecase }}</p>
                 <p>Age:&nbsp;{{ user.age }}</p>
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
                 <div class="mt-4">
