@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -42,11 +43,15 @@ export class UserService {
 
     private usersUrl = 'http://127.0.0.1:8000/mock_users';
 
-    private handleError<T>(newResult ?: T) {
+    private handleError<T>(runAway = false, newResult ?: T) {
         return (error: any): Observable<T> => {
             console.error(error.message);
 
-            return of(newResult as T);
+            if (!runAway) {
+                return of(newResult as T);
+            } else {
+                this.router.navigate(['dashboard']);
+            }
         };
     }
 
@@ -54,7 +59,7 @@ export class UserService {
         return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
                 retry(2),
-                catchError(this.handleError(placeholderUsers))
+                catchError(this.handleError(false, placeholderUsers))
             );
     }
 
@@ -64,7 +69,7 @@ export class UserService {
         return this.http.get<User>(url, headersGet)
             .pipe(
                 retry(2),
-                catchError(this.handleError(placeholderUsers[0]))
+                catchError(this.handleError(true, placeholderUsers[0]))
             );
     }
 
@@ -93,6 +98,9 @@ export class UserService {
             );
     }
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private http: HttpClient,
+        private router: Router
+    ) {
     }
 }
