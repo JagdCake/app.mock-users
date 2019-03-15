@@ -81,7 +81,9 @@ export class DashboardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.getUsers();
+        const page = +this.route.snapshot.paramMap.get('page');
+        const pagination = this.paginate(page);
+        this.getUsers(pagination.startIndex, pagination.lastIndex);
     }
 
 }
