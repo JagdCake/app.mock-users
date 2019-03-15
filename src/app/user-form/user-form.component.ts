@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../user.service';
 
@@ -58,7 +58,13 @@ export class UserFormComponent implements OnInit {
 
     edit(): void {
         this.userService.editUser(this.userId, this.userForm.value)
-            .subscribe((response) => console.log(response.body.message));
+            .subscribe((response) => {
+                console.log(response.body.message)
+
+                if (response.status === 200) {
+                    this.router.navigate(['dashboard']);
+                }
+            });
     }
 
     addOrEdit(): void {
@@ -76,7 +82,8 @@ export class UserFormComponent implements OnInit {
     constructor(
         private userService: UserService,
         private fb: FormBuilder,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
