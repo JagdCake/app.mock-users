@@ -1,3 +1,4 @@
-<p>
-  messages works!
-</p>
+<article class="text-white">
+    <h1 class="text-base">Message log:</h1>
+    <p class="m-2" *ngFor="let message of messageService.messages">{{ message }}</p>
+</article>
