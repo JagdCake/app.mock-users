@@ -7,8 +7,8 @@
                 <p>Age:&nbsp;{{ user.age }}</p>
                 <p *ngIf="user.sex">Sex:&nbsp;{{ user.sex | titlecase }}</p>
                 <div class="mt-4">
-                    <button class="bg-red text-black p-2 mr-2 rounded" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
-                    <a class="bg-yellow font-bold p-2 ml-2 text-black no-underline rounded" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
+                    <button class="bg-red-light text-black p-2 mr-2 rounded" (click)="confirmDelete(user.id, fullName.textContent); user.selectedIndex = i">Delete</button>
+                    <a class="bg-yellow-dark font-bold p-2 ml-2 text-black no-underline rounded relative pin-b" routerLink="/dashboard/user/{{ user.id }}/edit">Edit</a>
                 </div>
             </section>
         </li>
@@ -26,6 +26,6 @@
 
 <article *ngIf="userId && userId !== 'deleted'" [@dialogAnim] class="z-50 bg-black p-4 max-w-xs text-white text-center shadow fixed pin">
     <h1>Delete {{ name }}?</h1>
-    <button class="bg-red text-black p-2 m-2 rounded" (click)="deleteUser()">Yes</button>
+    <button class="bg-red-light text-black p-2 m-2 rounded" (click)="deleteUser()">Yes</button>
     <button class="bg-blue text-black p-2 m-2 rounded" (click)="userId = null">No</button>
 </article>
