@@ -42,7 +42,7 @@ const placeholderUsers = [
 })
 export class UserService {
 
-    private usersUrl = 'http://127.0.0.1:8000/mock_users';
+    private usersUrl = 'https://api.jagdcake.com/mock_users';
 
     private handleError<T>(runAway = false, message = 'Something happened', newResult ?: T) {
         return (error: any): Observable<T> => {
