@@ -75,7 +75,11 @@ export class DashboardComponent implements OnInit {
             .subscribe((users) => {
                 this.users = users.slice(fromIndex, toIndex);
 
-                this.pages = Math.round(users.length / this.itemsPerPage);
+                if (users.length >= this.itemsPerPage) {
+                    this.pages = Math.round(users.length / this.itemsPerPage);
+                } else {
+                    this.pages = 1;
+                }
                 this.goBackIfNoUsers();
             });
     }
