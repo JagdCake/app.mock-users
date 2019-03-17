@@ -2,9 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
+## First Time Setup
+Run `npm install` and `yarn global add @angular/cli` OR `npm install -g @angular/cli`.
+Create a file called `environment.private.ts` inside `src/environments/`.
+Add the following to the file:
+```
+export const privateEnv = {
+    apiKey: 'YOUR API KEY HERE',
+};
+```
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` (make sure not to change the port). The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
