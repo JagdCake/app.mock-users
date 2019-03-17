@@ -40,6 +40,7 @@ import { User } from '../user';
 export class DashboardComponent implements OnInit {
 
     users: User[] = [];
+    selectedUser: object;
     userId = null;
     name: string;
 
@@ -83,10 +84,11 @@ export class DashboardComponent implements OnInit {
         this.userService.deleteUser(this.userId)
             .subscribe((response) => console.log(response.body));
 
-        this.userId = 'deleted';
+        this.userId = null;
     }
 
-    confirmDelete(id: number, name: string): void {
+    confirmDelete(id: number, name: string, user: object): void {
+        this.selectedUser = user;
         this.userId = id;
         this.name = name;
     }
