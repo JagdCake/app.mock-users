@@ -22,7 +22,7 @@
         <a *ngIf="page > 1" href="/dashboard/1" class="bg-black rounded-t-full text-white no-underline p-4 pt-2 m-1 md:m-2">1</a>
         <a *ngIf="page > 1" href="/dashboard/{{ page - 1 }}" class="bg-black rounded-t-full text-white no-underline p-4 m-1 md:m-2">Prev</a>
         <em class="bg-black rounded-t-full p-4 pt-1 m-1 md:m-2 text-white">{{ page }}</em>
-        <a *ngIf="page !== pages" routerLink="/dashboard/{{ page + 1 }}/" class="bg-black rounded-t-full text-white no-underline p-4 m-1 md:m-2">Next</a>
+        <a *ngIf="page !== pages" href="/dashboard/{{ page + 1 }}/" class="bg-black rounded-t-full text-white no-underline p-4 m-1 md:m-2">Next</a>
         <a *ngIf="page !== pages" href="/dashboard/{{ pages }}" class="bg-black rounded-t-full text-white no-underline p-4 pt-2 m-1 md:m-2">{{ pages }}</a>
     </section>
 </article>
