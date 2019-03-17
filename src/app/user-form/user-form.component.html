@@ -1,4 +1,4 @@
-<main class="mx-auto w-5/6 md:w-1/4">
+<article class="mx-auto w-5/6 md:w-1/4">
     <form class="mx-auto text-left text-2xl m-12" [formGroup]="userForm" (ngSubmit)="addOrEdit()">
         <section class="m-4">
             <label class="block mb-2" for="first-name">First name</label>
@@ -29,4 +29,4 @@
 
         <button class="m-4 p-2 bg-black text-white rounded" [class.opacity-25]="userForm.invalid" type="submit">{{ formButton }} user</button>
     </form>
-</main>
+</article>
