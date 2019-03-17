@@ -44,11 +44,15 @@ export class UserService {
 
     private usersUrl = 'https://api.jagdcake.com/mock_users';
 
+    private log(msgType: string, message: string): void {
+        this.messageService.add(msgType, message);
+    }
+
     private handleError<T>(runAway = false, message = 'Something happened', newResult ?: T) {
         return (error: any): Observable<T> => {
             console.error(error.message);
 
-            this.messageService.add(message);
+            this.log('error', message);
 
             if (!runAway) {
                 return of(newResult as T);
