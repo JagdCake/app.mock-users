@@ -71,12 +71,12 @@ export class DashboardComponent implements OnInit {
 
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
-        .subscribe((users) => {
-            this.users = users.slice(fromIndex, toIndex);
+            .subscribe((users) => {
+                this.users = users.slice(fromIndex, toIndex);
 
-            this.pages = Math.round(users.length / this.itemsPerPage);
-            this.goBackIfNoUsers();
-        });
+                this.pages = Math.round(users.length / this.itemsPerPage);
+                this.goBackIfNoUsers();
+            });
     }
 
     deleteUser(): void {
