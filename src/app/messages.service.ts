@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class MessagesService {
 
-    messages: string[] = [];
+    messages: object[] = [];
 
     timestamp(): string {
         const currentTime = new Date().toLocaleTimeString('en-GB', {
@@ -18,7 +18,8 @@ export class MessagesService {
     }
 
     add(message: string): void {
-        this.messages.push(message);
+        const time = this.timestamp();
+        this.messages.push({time}, {body: message});
     }
 
     clear() {
