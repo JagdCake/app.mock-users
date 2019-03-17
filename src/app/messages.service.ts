@@ -18,9 +18,10 @@ export class MessagesService {
         return currentTime;
     }
 
-    add(message: string): void {
+    add(msgType: string, message: string): void {
         const time = this.timestamp();
-        this.messages.push({time}, {body: message});
+
+        this[`${msgType}Messages`].push({time}, {body: message});
     }
 
     clear() {
