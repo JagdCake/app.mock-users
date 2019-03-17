@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
         this.userId = 'deleted';
     }
 
-    confirmDelete(id: number, name: string) {
+    confirmDelete(id: number, name: string): void {
         this.userId = id;
         this.name = name;
     }
