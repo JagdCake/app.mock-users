@@ -24,8 +24,8 @@ export class MessagesService {
         this[`${msgType}Messages`].push({time}, {body: message});
     }
 
-    clear() {
-        this.messages = [];
+    clear(msgType: string): void {
+        this[`${msgType}Messages`] = [];
     }
 
     constructor() { }
