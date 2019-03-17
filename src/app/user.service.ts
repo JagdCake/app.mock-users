@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, tap } from 'rxjs/operators';
 
 import { User } from './user';
 import { privateEnv } from '../environments/environment.private';
@@ -65,6 +65,7 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
+                tap((_) => this.log('success', 'Found all users')),
                 retry(2),
                 catchError(this.handleError(false, 'Could not find all users', placeholderUsers))
             );
@@ -75,6 +76,7 @@ export class UserService {
 
         return this.http.get<User>(url, headersGet)
             .pipe(
+                tap((_) => this.log('success', 'User found')),
                 retry(2),
                 catchError(this.handleError(true, 'User not found', placeholderUsers[0]))
             );
@@ -88,6 +90,7 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
+                tap((_) => this.log('success', 'Added a new user')),
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not add user'))
             );
     }
@@ -102,7 +105,8 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
-                catchError(this.handleError<HttpResponse<object>>(false, 'Could not edit user'))
+                tap((_) => this.log('success', 'Updated user')),
+                catchError(this.handleError<HttpResponse<object>>(false, 'Could not update user'))
             );
     }
 
@@ -116,6 +120,7 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
+                tap((_) => this.log('success', 'User deleted')),
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not delete user'))
             );
     }
