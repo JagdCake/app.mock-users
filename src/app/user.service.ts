@@ -42,7 +42,7 @@ const placeholderUsers = [
 })
 export class UserService {
 
-    private usersUrl = 'https://api.jagdcake.com/mock_users';
+    private usersUrl = 'http://localhost:8000/mock_users';
 
     private log(msgType: string, message: string): void {
         this.messageService.add(msgType, message);
