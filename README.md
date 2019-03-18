@@ -11,6 +11,8 @@ export const privateEnv = {
     apiKey: 'YOUR API KEY HERE',
 };
 ```
+**Note:** Sometimes the API doesn't accept POST requests to add a new user. Resend the form, it generally works the second time.  
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` (make sure not to change the port). The app will automatically reload if you change any of the source files.
