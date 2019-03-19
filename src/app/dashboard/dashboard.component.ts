@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -37,7 +37,7 @@ import { User } from '../user';
         )
     ],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, DoCheck {
 
     users: User[] = [];
     selectedUser: any; // : HTML element
@@ -115,6 +115,13 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.getUsersForPage();
+    }
+
+    ngDoCheck(): void {
+        const page = +this.route.snapshot.paramMap.get('page');
+        if (page !== this.page) {
+            this.getUsersForPage();
+        }
     }
 
 }
