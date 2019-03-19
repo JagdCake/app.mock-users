@@ -27,7 +27,7 @@
              </select>
         </section>
 
-        <button class="m-4 p-2 bg-black text-white rounded" [class.opacity-25]="userForm.invalid" type="submit">{{ formButton }} user</button>
+        <button class="m-4 p-2 bg-red-light text-black rounded" [class.opacity-25]="userForm.invalid" type="submit">{{ formButton }} user</button>
         <button class="m-4 p-2 bg-yellow text-black rounded" type="button" (click)="this.location.back()">Cancel</button>
     </form>
 </article>
