@@ -101,16 +101,20 @@ export class DashboardComponent implements OnInit {
         this.name = name;
     }
 
+    getUsersForPage() {
+        this.page = +this.route.snapshot.paramMap.get('page');
+        const pagination = this.paginate(this.page);
+        this.getUsers(pagination.startIndex, pagination.lastIndex);
+    }
+
     constructor(
         private userService: UserService,
         private route: ActivatedRoute,
         private location: Location
     ) { }
 
-    ngOnInit() {
-        this.page = +this.route.snapshot.paramMap.get('page');
-        const pagination = this.paginate(this.page);
-        this.getUsers(pagination.startIndex, pagination.lastIndex);
+    ngOnInit(): void {
+        this.getUsersForPage();
     }
 
 }
