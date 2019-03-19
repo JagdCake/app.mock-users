@@ -7,27 +7,28 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'dashboard/1',
+        redirectTo: 'dashboard/users/1',
     },
     {
-        path: 'dashboard',
-        redirectTo: 'dashboard/1',
-    },
-    {
-        path: 'dashboard/:page',
-        component: DashboardComponent,
-    },
-    {
-        path: 'dashboard/user/add',
-        component: UserFormComponent,
-    },
-    {
-        path: 'dashboard/user/:id/edit',
-        component: UserFormComponent,
+        path: 'dashboard/users',
+        children: [
+            {
+                path: 'add',
+                component: UserFormComponent,
+            },
+            {
+                path: ':id/edit',
+                component: UserFormComponent,
+            },
+            {
+                path: ':page',
+                component: DashboardComponent,
+            },
+        ],
     },
     {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'dashboard/users/1',
     },
 ];
 
