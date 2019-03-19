@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { UserService } from '../user.service';
 
@@ -62,7 +63,7 @@ export class UserFormComponent implements OnInit {
                 console.log(response.body);
 
                 if (response.status === 200) {
-                    this.router.navigate(['dashboard']);
+                    this.location.back();
                 }
             });
     }
@@ -83,7 +84,7 @@ export class UserFormComponent implements OnInit {
         private userService: UserService,
         private fb: FormBuilder,
         private route: ActivatedRoute,
-        private router: Router
+        private location: Location
     ) { }
 
     ngOnInit(): void {
