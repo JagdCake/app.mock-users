@@ -49,9 +49,8 @@ export class UserFormComponent implements OnInit {
     add(): void {
         this.userService.addUser(this.userForm.value)
             .subscribe((response) => {
-                console.log(response.body);
-
-                if (response.status === 201) {
+                if (response) {
+                    console.log(response.body);
                     this.userForm.reset();
                 }
             });
@@ -60,9 +59,8 @@ export class UserFormComponent implements OnInit {
     edit(): void {
         this.userService.editUser(this.userId, this.userForm.value)
             .subscribe((response) => {
-                console.log(response.body);
-
-                if (response.status === 200) {
+                if (response) {
+                    console.log(response.body);
                     this.location.back();
                 }
             });
