@@ -41,6 +41,10 @@ export class UserFormComponent implements OnInit {
         ],
     });
 
+    goBack(): void {
+        this.location.back();
+    }
+
     show(): void {
         this.userService.getUser(this.userId)
             .subscribe((user) => this.userForm.setValue(user));
@@ -61,7 +65,7 @@ export class UserFormComponent implements OnInit {
             .subscribe((response) => {
                 if (response) {
                     console.log(response.body);
-                    this.location.back();
+                    this.goBack();
                 }
             });
     }
