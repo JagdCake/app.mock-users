@@ -19,7 +19,7 @@
     <section class="mt-8 text-center">
         <h1 class="text-base mb-8">Page navigation</h1>
 
-        <a *ngIf="page > 1" routerLink="../1" class="bg-black rounded-t-full text-white no-underline p-3 pt-6 m-1 md:m-2">1</a>
+        <a *ngIf="page > 1" routerLink="../1" class="bg-black rounded-t-full text-white no-underline p-3 pt-6 m-1 ml-0 md:m-2">1</a>
 
         <a *ngIf="(page - 2) > 1" routerLink="../{{ page - 2 }}/" class="bg-black rounded-t-full text-white no-underline p-3 pt-4 m-1 md:m-2">{{ page - 2 }}</a>
         <a *ngIf="(page - 1) > 1" routerLink="../{{ page - 1 }}/" class="bg-black rounded-t-full text-white no-underline p-3 m-1 md:m-2">{{ page - 1 }}</a>
@@ -29,7 +29,7 @@
         <a *ngIf="(page + 1) < pages" routerLink="../{{ page + 1 }}/" class="bg-black rounded-t-full text-white no-underline p-3 m-1 md:m-2">{{ page + 1 }}</a>
         <a *ngIf="(page + 2) < pages" routerLink="../{{ page + 2 }}/" class="bg-black rounded-t-full text-white no-underline p-3 pt-4 m-1 md:m-2">{{ page + 2 }}</a>
 
-        <a *ngIf="page !== pages" routerLink="../{{ pages }}" class="bg-black rounded-t-full text-white no-underline p-3 pt-6 m-1 md:m-2">{{ pages }}</a>
+        <a *ngIf="page !== pages" routerLink="../{{ pages }}" class="bg-black rounded-t-full text-white no-underline p-3 pt-6 m-1 ml-0 md:m-2">{{ pages }}</a>
     </section>
 </article>
 
