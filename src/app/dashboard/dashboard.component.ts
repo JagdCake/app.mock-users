@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
@@ -64,9 +64,9 @@ export class DashboardComponent implements OnInit, DoCheck {
         };
     }
 
-    goBackIfNoUsers(): void {
+    redirectIfNoUsers(): void {
         if (this.page <= 0 || this.page > this.pages) {
-            this.location.back();
+            this.router.navigateByUrl('/');
         }
     }
 
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit, DoCheck {
                 } else {
                     this.pages = 1;
                 }
-                this.goBackIfNoUsers();
+                this.redirectIfNoUsers();
             });
     }
 
@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit, DoCheck {
     constructor(
         private userService: UserService,
         private route: ActivatedRoute,
-        private location: Location
+        private router: Router
     ) { }
 
     ngOnInit(): void {

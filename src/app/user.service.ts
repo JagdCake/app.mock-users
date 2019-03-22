@@ -57,7 +57,7 @@ export class UserService {
             if (!runAway) {
                 return of(newResult as T);
             } else {
-                this.router.navigate(['dashboard']);
+                this.router.navigateByUrl('/');
             }
         };
     }
