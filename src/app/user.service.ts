@@ -44,15 +44,11 @@ export class UserService {
 
     private usersUrl = 'http://localhost:8000/mock_users';
 
-    private log(msgType: string, message: string): void {
-        this.messageService.add(msgType, message);
-    }
-
     private handleError<T>(runAway = false, message = 'Something happened', newResult ?: T) {
         return (error: any): Observable<T> => {
             console.error(error.message);
 
-            this.log('error', message);
+            this.messageService.log('error', message);
 
             if (!runAway) {
                 return of(newResult as T);
@@ -65,7 +61,7 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
-                tap((_) => this.log('success', 'Found all users')),
+                tap((_) => this.messageService.log('success', 'Found all users')),
                 retry(2),
                 catchError(this.handleError(false, 'Could not find all users', placeholderUsers))
             );
@@ -76,7 +72,7 @@ export class UserService {
 
         return this.http.get<User>(url, headersGet)
             .pipe(
-                tap((_) => this.log('success', 'User found')),
+                tap((_) => this.messageService.log('success', 'User found')),
                 retry(2),
                 catchError(this.handleError(true, 'User not found', placeholderUsers[0]))
             );
@@ -90,7 +86,7 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
-                tap((_) => this.log('success', 'Added a new user')),
+                tap((_) => this.messageService.log('success', 'Added a new user')),
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not add user'))
             );
     }
@@ -105,7 +101,7 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
-                tap((_) => this.log('success', 'Updated user')),
+                tap((_) => this.messageService.log('success', 'Updated user')),
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not update user'))
             );
     }
@@ -120,7 +116,7 @@ export class UserService {
                 observe: 'response',
             })
             .pipe(
-                tap((_) => this.log('success', 'User deleted')),
+                tap((_) => this.messageService.log('success', 'User deleted')),
                 catchError(this.handleError<HttpResponse<object>>(false, 'Could not delete user'))
             );
     }

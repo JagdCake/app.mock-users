@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class MessagesService {
 
-    errorMessages: object[] = [];
-    successMessages: object[] = [];
+    private errorMessages: object[] = [];
+    private successMessages: object[] = [];
 
-    timestamp(): string {
+    private timestamp(): string {
         const currentTime = new Date().toLocaleTimeString('en-GB', {
             hour: 'numeric',
             minute: 'numeric',
@@ -18,13 +18,17 @@ export class MessagesService {
         return currentTime;
     }
 
-    add(msgType: string, message: string): void {
+    private add(msgType: string, message: string): void {
         const time = this.timestamp();
 
         this[`${msgType}Messages`].push({time}, {body: message});
     }
 
-    clear(msgType: string): void {
+    public log(msgType: string, message: string): void {
+        this.add(msgType, message);
+    }
+
+    private clear(msgType: string): void {
         this[`${msgType}Messages`] = [];
     }
 
