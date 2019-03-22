@@ -43,6 +43,7 @@ const placeholderUsers = [
 export class UserService {
 
     private usersUrl = 'http://localhost:8000/mock_users';
+    public userFromDashboard = false;
 
     private handleError<T>(runAway = false, message = 'Something happened', newResult ?: T) {
         return (error: any): Observable<T> => {
@@ -61,7 +62,10 @@ export class UserService {
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.usersUrl, headersGet)
             .pipe(
-                tap((_) => this.messageService.log('success', 'Found all users')),
+                tap((_) => {
+                    this.messageService.log('success', 'Found all users');
+                    this.userFromDashboard = true;
+                }),
                 retry(2),
                 catchError(this.handleError(false, 'Could not find all users', placeholderUsers))
             );
