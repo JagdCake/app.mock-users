@@ -42,7 +42,11 @@ export class UserFormComponent implements OnInit {
     });
 
     goBack(): void {
-        this.location.back();
+        if (this.userService.userFromDashboard) {
+            this.location.back();
+        } else {
+            this.router.navigateByUrl('/');
+        }
     }
 
     show(): void {
@@ -86,7 +90,8 @@ export class UserFormComponent implements OnInit {
         private userService: UserService,
         private fb: FormBuilder,
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
