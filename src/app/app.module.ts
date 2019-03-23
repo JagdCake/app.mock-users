@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { MessagesComponent } from './messages/messages.component';
+import { FocusDirective } from './focus.directive';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { MessagesComponent } from './messages/messages.component';
         DashboardComponent,
         UserFormComponent,
         MessagesComponent,
+        FocusDirective,
     ],
     imports: [
         BrowserModule,
