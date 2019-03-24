@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { UserService } from './user.service';
 
 describe('UserService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+    beforeEach(() => TestBed.configureTestingModule({
+        imports: [
+            RouterTestingModule,
+            HttpClientModule,
+        ],
+    }));
 
-  it('should be created', () => {
-    const service: UserService = TestBed.get(UserService);
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        const service: UserService = TestBed.get(UserService);
+        expect(service).toBeTruthy();
+    });
 });
