@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 
 describe('AppComponent', () => {
+    let componentLinks: HTMLElement[];
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
           imports: [
@@ -34,4 +36,14 @@ describe('AppComponent', () => {
         const compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('h1').textContent).toEqual('M-P');
     });
+
+    it('should have exactly 3 links', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+
+        componentLinks = compiled.querySelectorAll('a');
+        expect(componentLinks.length).toEqual(3);
+    });
+
 });
