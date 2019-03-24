@@ -1,10 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 @Component({selector: 'app-messages', template: ''})
 class MessagesStubComponent {}
+
+@Component({selector: 'router-outlet', template: ''})
+class RouterOutletStubComponent { }
 
 describe('AppComponent', () => {
     let componentLinks: HTMLElement[];
@@ -14,12 +16,10 @@ describe('AppComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-          imports: [
-            RouterTestingModule
-          ],
           declarations: [
             AppComponent,
             MessagesStubComponent,
+            RouterOutletStubComponent,
           ],
         }).compileComponents();
 
