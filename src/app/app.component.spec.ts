@@ -1,7 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
+import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { MessagesComponent } from './messages/messages.component';
+
+@Component({selector: 'app-messages', template: ''})
+class MessagesStubComponent {}
 
 describe('AppComponent', () => {
     let componentLinks: HTMLElement[];
@@ -13,7 +16,7 @@ describe('AppComponent', () => {
           ],
           declarations: [
             AppComponent,
-            MessagesComponent,
+            MessagesStubComponent,
           ],
         }).compileComponents();
     }));
