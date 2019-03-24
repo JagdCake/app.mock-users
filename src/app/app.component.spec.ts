@@ -8,6 +8,9 @@ class MessagesStubComponent {}
 
 describe('AppComponent', () => {
     let componentLinks: HTMLElement[];
+    let fixture;
+    let app
+    let elements;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -19,33 +22,30 @@ describe('AppComponent', () => {
             MessagesStubComponent,
           ],
         }).compileComponents();
+
+        fixture = TestBed.createComponent(AppComponent);
+        app = fixture.debugElement.componentInstance;
+        elements = fixture.debugElement.nativeElement;
     }));
 
     it('should create the app', () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     });
 
     it(`should have as title 'M-P'`, () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
         expect(app.title).toEqual('M-P');
     });
 
     it('should render title in a h1 tag', () => {
-        const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
-        const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h1').textContent).toEqual('M-P');
+
+        const h1Tag = elements.querySelector('h1').textContent;
+        expect(h1Tag).toEqual('M-P');
     });
 
     it('should have exactly 3 links', () => {
-        const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
-        const compiled = fixture.debugElement.nativeElement;
-
-        componentLinks = compiled.querySelectorAll('a');
+        componentLinks = elements.querySelectorAll('a');
         expect(componentLinks.length).toEqual(3);
     });
 
