@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { DashboardComponent } from './dashboard.component';
 
 class MockUserService {
-    getUsers(): array<object> {
+    getUsers(): Array<object> {
         return [
             {
                 id: 1,
