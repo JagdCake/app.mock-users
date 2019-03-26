@@ -3,6 +3,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { DashboardComponent } from './dashboard.component';
 
+class MockUserService {
+    getUsers(): array<object> {
+        return [
+            {
+                id: 1,
+                first_name: 'Ethelbert',
+                last_name: 'Swinfon',
+            },
+        ];
+    }
+}
+
 describe('DashboardComponent', () => {
     let fixture: ComponentFixture<DashboardComponent>;
     let dashboard: DashboardComponent;
