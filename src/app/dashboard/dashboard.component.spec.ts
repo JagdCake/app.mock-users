@@ -1,17 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
 
 class MockUserService {
-    getUsers(): Array<object> {
-        return [
-            {
-                id: 1,
-                first_name: 'Ethelbert',
-                last_name: 'Swinfon',
-            },
-        ];
+    users = [
+        {
+            id: 1,
+            first_name: 'Ethelbert',
+            last_name: 'Swinfon',
+        },
+    ];
+
+    getUsers(): Observable<object[]> {
+        return new Observable((observer) => {
+            const handler = (users) => observer.next(users);
+
+            handler(this.users);
+
+            return handler;
+        });
     }
 }
 
