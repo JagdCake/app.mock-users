@@ -64,5 +64,13 @@ describe('DashboardComponent', () => {
             expect(usersIndices.startIndex).toEqual(36);
             expect(usersIndices.lastIndex).toEqual(54);
         });
+
+        it('should get all users in the index range, from the UserService', () => {
+            // arg1 = startIndex, arg2 = lastIndex
+            dashboard.getUsers(0, 10);
+
+            const mockUserService = new MockUserService();
+            expect(dashboard.users).toEqual(mockUserService.users);
+        });
     });
 });
