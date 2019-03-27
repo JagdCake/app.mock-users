@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
+import { UserService } from '../user.service';
 
 class MockUserService {
     users = [
@@ -25,21 +26,23 @@ class MockUserService {
 }
 
 describe('DashboardComponent', () => {
-    let fixture: ComponentFixture<DashboardComponent>;
+    let userService: UserService;
     let dashboard: DashboardComponent;
-    let elements;
-    let debugElements;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule ],
-            declarations: [ DashboardComponent ],
+            providers: [
+                DashboardComponent,
+                {
+                    provide: UserService,
+                    useClass: MockUserService,
+                }
+            ],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(DashboardComponent);
-        dashboard = fixture.componentInstance;
-        elements = fixture.nativeElement;
-        debugElements = fixture.debugElement;
+        dashboard = TestBed.get(DashboardComponent);
+        userService = TestBed.get(UserService);
     }));
 
     it('should create the dashboard', () => {
