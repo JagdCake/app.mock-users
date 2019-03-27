@@ -11,6 +11,8 @@ class MockUserService {
             id: 1,
             first_name: 'Ethelbert',
             last_name: 'Swinfon',
+            age: 30,
+            sex: 'Male',
         },
     ];
 
