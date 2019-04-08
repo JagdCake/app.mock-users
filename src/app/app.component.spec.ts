@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,9 +13,9 @@ class RouterOutletStubComponent { }
 describe('AppComponent', () => {
     let componentLinks: HTMLElement[];
     let router: Router;
-    let fixture;
-    let app
-    let elements;
+    let fixture: ComponentFixture<AppComponent>;
+    let app: any;
+    let elements: any;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
