@@ -21,7 +21,7 @@ export class PaginationService {
 
     setNumOfPagesFor(content) {
         if (content.length >= this.itemsPerPage) {
-            this.pages = Math.round(content.length / this.itemsPerPage);
+            this.pages = Math.ceil(content.length / this.itemsPerPage);
         } else {
             this.pages = 1;
         }
