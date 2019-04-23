@@ -45,25 +45,6 @@ export class DashboardComponent implements OnInit, DoCheck {
     userId = null;
     name: string;
 
-    itemsPerPage = 18;
-    page: number;
-    pages: number;
-
-    paginate(page: number, itemsPerPage = this.itemsPerPage): any {
-        const theLastIndex = page * itemsPerPage;
-
-        if (page === 1) {
-            return {
-                startIndex: 0,
-                lastIndex: theLastIndex,
-            };
-        }
-
-        return {
-            startIndex: (theLastIndex - itemsPerPage),
-            lastIndex: theLastIndex,
-        };
-    }
 
     redirectIfNoUsers(): void {
         if (this.page <= 0 || this.page > this.pages) {
