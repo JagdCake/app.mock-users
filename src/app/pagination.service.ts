@@ -28,6 +28,7 @@ export class PaginationService {
     }
 
     paginate(page: number, itemsPerPage = this.itemsPerPage): any {
+        this.page = page;
         const theLastIndex = page * itemsPerPage;
 
         if (page === 1) {
