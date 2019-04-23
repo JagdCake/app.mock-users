@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit, DoCheck {
                 const sliceOfUsers = users.slice(fromIndex, toIndex);
                 this.users = sliceOfUsers;
 
-                this.paginationService.setNumOfPagesFor(sliceOfUsers);
+                this.paginationService.setNumOfPagesFor(users);
                 this.paginationService.redirectIfNothingOnPage();
             });
     }
