@@ -1,11 +1,9 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
-import { MessagesService } from '../messages.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -45,13 +43,6 @@ export class DashboardComponent implements OnInit, DoCheck {
     userId = null;
     name: string;
 
-
-    redirectIfNoUsers(): void {
-        if (this.page <= 0 || this.page > this.pages) {
-            this.router.navigateByUrl('/');
-            this.messageService.log('error', 'Page doesn\'t exist');
-        }
-    }
 
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
@@ -93,8 +84,6 @@ export class DashboardComponent implements OnInit, DoCheck {
     constructor(
         private userService: UserService,
         private route: ActivatedRoute,
-        private router: Router,
-        private messageService: MessagesService
     ) { }
 
     ngOnInit(): void {
