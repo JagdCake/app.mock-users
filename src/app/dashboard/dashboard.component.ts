@@ -44,6 +44,9 @@ export class DashboardComponent implements OnInit, DoCheck {
     userId = null;
     name: string;
 
+    page: number;
+    pages: number;
+
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
             .subscribe((users) => {
@@ -51,6 +54,7 @@ export class DashboardComponent implements OnInit, DoCheck {
                 this.users = sliceOfUsers;
 
                 this.paginationService.setNumOfPagesFor(users);
+                this.pages = this.paginationService.pages;
                 this.paginationService.redirectIfNothingOnPage();
             });
     }
@@ -72,9 +76,9 @@ export class DashboardComponent implements OnInit, DoCheck {
         this.name = name;
     }
 
-    getUsersForPage() {
-        this.page = +this.route.snapshot.paramMap.get('page');
-        const pagination = this.paginate(this.page);
+    getUsersForPage(page: number) {
+        const pagination = this.paginationService.paginate(page);
+        this.page = this.paginationService.page;
         this.getUsers(pagination.startIndex, pagination.lastIndex);
     }
 
@@ -85,13 +89,14 @@ export class DashboardComponent implements OnInit, DoCheck {
     ) { }
 
     ngOnInit(): void {
-        this.getUsersForPage();
+        const currentPage = +this.route.snapshot.paramMap.get('page');
+        this.getUsersForPage(currentPage);
     }
 
     ngDoCheck(): void {
-        const page = +this.route.snapshot.paramMap.get('page');
-        if (page !== this.page) {
-            this.getUsersForPage();
+        const currentPage = +this.route.snapshot.paramMap.get('page');
+        if (currentPage !== this.paginationService.page) {
+            this.getUsersForPage(currentPage);
         }
     }
 
