@@ -39,17 +39,18 @@ import { PaginationService } from '../pagination.service';
 })
 export class DashboardComponent implements OnInit, DoCheck {
 
+    users: User[];
     selectedUser: any; // : HTML element
     userId = null;
     name: string;
-
 
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
             .subscribe((users) => {
                 const sliceOfUsers = users.slice(fromIndex, toIndex);
+                this.users = sliceOfUsers;
 
-                this.paginationService.getNumOfPagesFor(sliceOfUsers);
+                this.paginationService.setNumOfPagesFor(sliceOfUsers);
                 this.paginationService.redirectIfNothingOnPage();
             });
     }

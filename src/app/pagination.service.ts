@@ -19,7 +19,7 @@ export class PaginationService {
         }
     }
 
-    getNumOfPagesFor(content) {
+    setNumOfPagesFor(content) {
         if (content.length >= this.itemsPerPage) {
             this.pages = Math.round(content.length / this.itemsPerPage);
         } else {
