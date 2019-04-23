@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { PaginationService } from '../pagination.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -38,7 +39,6 @@ import { User } from '../user';
 })
 export class DashboardComponent implements OnInit, DoCheck {
 
-    users: User[] = [];
     selectedUser: any; // : HTML element
     userId = null;
     name: string;
@@ -47,14 +47,10 @@ export class DashboardComponent implements OnInit, DoCheck {
     getUsers(fromIndex: number, toIndex: number): void {
         this.userService.getUsers()
             .subscribe((users) => {
-                this.users = users.slice(fromIndex, toIndex);
+                const sliceOfUsers = users.slice(fromIndex, toIndex);
 
-                if (users.length >= this.itemsPerPage) {
-                    this.pages = Math.round(users.length / this.itemsPerPage);
-                } else {
-                    this.pages = 1;
-                }
-                this.redirectIfNoUsers();
+                this.paginationService.getNumOfPagesFor(sliceOfUsers);
+                this.paginationService.redirectIfNothingOnPage();
             });
     }
 
@@ -84,6 +80,7 @@ export class DashboardComponent implements OnInit, DoCheck {
     constructor(
         private userService: UserService,
         private route: ActivatedRoute,
+        private paginationService: PaginationService
     ) { }
 
     ngOnInit(): void {

@@ -19,6 +19,14 @@ export class PaginationService {
         }
     }
 
+    getNumOfPagesFor(content) {
+        if (content.length >= this.itemsPerPage) {
+            this.pages = Math.round(content.length / this.itemsPerPage);
+        } else {
+            this.pages = 1;
+        }
+    }
+
     paginate(page: number, itemsPerPage = this.itemsPerPage): any {
         const theLastIndex = page * itemsPerPage;
 
