@@ -50,27 +50,4 @@ describe('DashboardComponent', () => {
     it('should create the dashboard', () => {
         expect(dashboard).toBeTruthy();
     });
-
-    describe('and its methods', () => {
-        it('should generate the right indices to slice off 18 users from an array', () => {
-            // arg1 = page number, arg2 = 18; users per page
-            let usersIndices = dashboard.paginate(1);
-
-            expect(usersIndices.startIndex).toEqual(0);
-            expect(usersIndices.lastIndex).toEqual(18);
-
-            usersIndices = dashboard.paginate(3);
-
-            expect(usersIndices.startIndex).toEqual(36);
-            expect(usersIndices.lastIndex).toEqual(54);
-        });
-
-        it('should get all users in the index range, from the UserService', () => {
-            // arg1 = startIndex, arg2 = lastIndex
-            dashboard.getUsers(0, 10);
-
-            const mockUserService = new MockUserService();
-            expect(dashboard.users).toEqual(mockUserService.users);
-        });
-    });
 });
