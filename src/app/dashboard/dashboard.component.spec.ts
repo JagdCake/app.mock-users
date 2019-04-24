@@ -29,11 +29,14 @@ class MockUserService {
 
 describe('DashboardComponent', () => {
     let userService: UserService;
-    let dashboard: DashboardComponent;
+    let fixture: any;
+    let app: any;
+    let elements: any;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule ],
+            declarations: [ DashboardComponent] ,
             providers: [
                 DashboardComponent,
                 {
@@ -43,11 +46,13 @@ describe('DashboardComponent', () => {
             ],
         }).compileComponents();
 
-        dashboard = TestBed.get(DashboardComponent);
+        fixture = TestBed.createComponent(DashboardComponent);
+        app = fixture.debugElement.componentInstance;
+        elements = fixture.debugElement.nativeElement;
         userService = TestBed.get(UserService);
     }));
 
     it('should create the dashboard', () => {
-        expect(dashboard).toBeTruthy();
+        expect(app).toBeTruthy();
     });
 });
