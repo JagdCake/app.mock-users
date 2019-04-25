@@ -33,7 +33,7 @@
     </section>
 </article>
 
-<article (keydown.esc)="userId = null" *ngIf="userId" [@dialogAnim] class="z-50 bg-black p-4 max-w-xs text-white text-center shadow fixed pin">
+<article (keydown.esc)="userId = null" *ngIf="userId" [@dialogAnim] class="confirmation-dialog z-50 bg-black p-4 max-w-xs text-white text-center shadow fixed pin">
     <h1 class="break-word">Delete {{ name }}?</h1>
 
     <button #yesBtn (blur)="noBtn.focus()" class="bg-red-light text-black p-2 m-2 rounded" (click)="deleteUser()">Yes</button>

@@ -1,6 +1,7 @@
 import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DashboardComponent } from './dashboard.component';
 import { UserService } from '../user.service';
@@ -35,7 +36,10 @@ describe('DashboardComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ RouterTestingModule ],
+            imports: [
+                RouterTestingModule,
+                BrowserAnimationsModule
+            ],
             declarations: [ DashboardComponent] ,
             providers: [
                 DashboardComponent,
@@ -54,5 +58,20 @@ describe('DashboardComponent', () => {
 
     it('should create the dashboard', () => {
         expect(app).toBeTruthy();
+    });
+
+    it('should display a confirmation dialog to delete a user', () => {
+        let dialog = elements.querySelector('.confirmation-dialog');
+        expect(dialog).toBeNull();
+
+        const fakeUser = {
+            id: 1,
+            name: 'Fake User',
+        };
+        app.confirmDelete(fakeUser.id, fakeUser.name, fakeUser);
+        fixture.detectChanges();
+
+        dialog = elements.querySelector('.confirmation-dialog');
+        expect(dialog.hasAttribute('hidden')).toEqual(false);
     });
 });
