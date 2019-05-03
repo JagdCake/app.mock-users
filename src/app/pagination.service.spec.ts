@@ -35,4 +35,20 @@ describe('PaginationService', () => {
         service.redirectIfNothingOnPage(2, 1);
         expect(navigationSpy).toHaveBeenCalledWith('/');
     });
+
+    it('should set the correct number of pages to fit all content', () => {
+        service.setNumOfPagesFor(new Array(10000));
+        expect(service.pages).toEqual(556);
+
+        service.itemsPerPage = 5;
+
+        service.setNumOfPagesFor(new Array(4));
+        expect(service.pages).toEqual(1);
+
+        service.setNumOfPagesFor(new Array(5));
+        expect(service.pages).toEqual(1);
+
+        service.setNumOfPagesFor(new Array(6));
+        expect(service.pages).toEqual(2);
+    });
 });
