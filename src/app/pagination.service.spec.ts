@@ -51,4 +51,17 @@ describe('PaginationService', () => {
         service.setNumOfPagesFor(new Array(6));
         expect(service.pages).toEqual(2);
     });
+
+    it('should generate the correct indices to slice off 18 items from an array', () => {
+        // arg1 = page number, arg2 = 18 (default items per page)
+        let indices = service.paginate(1);
+
+        expect(indices.startIndex).toEqual(0);
+        expect(indices.lastIndex).toEqual(18);
+
+        indices = service.paginate(3);
+
+        expect(indices.startIndex).toEqual(36);
+        expect(indices.lastIndex).toEqual(54);
+    });
 });
