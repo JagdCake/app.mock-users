@@ -62,4 +62,15 @@ describe('UserService', () => {
         httpTest.flush(userData);
         expect(service.userFromDashboard).toEqual(true);
     });
+
+    it('should get a specific user from an API', () => {
+        service.getUser(1).subscribe((data) => {
+            expect(data).toEqual(userData[0]);
+        });
+
+        const httpTest = httpController.expectOne(
+            req => req.headers.has('X-AUTH-TOKEN')
+        );
+        expect(httpTest.request.method).toEqual('GET');
+    });
 });
