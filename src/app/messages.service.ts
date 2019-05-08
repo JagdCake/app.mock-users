@@ -26,7 +26,11 @@ export class MessagesService {
     }
 
     public log(msgType: string, message: string): void {
-        this.add(msgType, message);
+        if (this[`${msgType}Messages`]) {
+            this.add(msgType, message);
+        } else {
+            console.error('Unsupported message type');
+        }
     }
 
     private clear(msgType: string): void {
