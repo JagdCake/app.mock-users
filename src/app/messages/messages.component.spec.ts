@@ -26,12 +26,16 @@ describe('MessagesComponent', () => {
         expect(component).toBeTruthy();
     });
 
-
-    it('should display error messages', () => {
-        service.log('error', 'Something happened');
+    function getMessage(msgType: string): string {
+        service.log(msgType, 'Message');
         fixture.detectChanges();
 
-        const successMessage = elements.querySelector('.error-message').textContent;
-        expect(successMessage).toContain('Something happened');
+        return elements.querySelector(`.${msgType}-message`).textContent;
+    }
+
+    it('should display error messages', () => {
+        expect(getMessage('error')).toContain('Message');
+    });
+
     });
 });
