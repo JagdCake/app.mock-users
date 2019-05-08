@@ -19,7 +19,7 @@ describe('MessagesComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should create the messages component', () => {
         expect(component).toBeTruthy();
     });
 });
