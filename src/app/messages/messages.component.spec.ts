@@ -37,5 +37,7 @@ describe('MessagesComponent', () => {
         expect(getMessage('error')).toContain('Message');
     });
 
+    it('should display success messages', () => {
+        expect(getMessage('success')).toContain('Message');
     });
 });
