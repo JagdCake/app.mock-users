@@ -40,4 +40,15 @@ describe('MessagesComponent', () => {
     it('should display success messages', () => {
         expect(getMessage('success')).toContain('Message');
     });
+
+    it('should clear messages on button click', () => {
+        getMessage('error');
+
+        const clearLogButton = elements.querySelector('button:nth-of-type(1)');
+        clearLogButton.click();
+
+        fixture.detectChanges();
+        // paragraphs are created only if there are messages to display
+        expect(elements.querySelector('p')).toBeNull();
+    });
 });
