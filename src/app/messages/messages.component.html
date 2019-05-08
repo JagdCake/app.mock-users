@@ -6,7 +6,7 @@
             <h1 class="text-base text-center">Error messages</h1>
             <p class="m-1 md:m-2" *ngFor="let message of messageService.errorMessages">
                 <time class="text-xs text-green border-b">{{ message.time }}</time>
-                {{ message.body }}
+                <span class="error-message">{{ message.body }}</span>
             </p>
         </section>
 
@@ -16,7 +16,7 @@
             <h1 class="text-base text-center">Success messages</h1>
             <p class="m-1 md:m-2" *ngFor="let message of messageService.successMessages">
                 <time class="text-xs text-green border-b">{{ message.time }}</time>
-                {{ message.body }}
+                <span class="success-message">{{ message.body }}</span>
             </p>
         </section>
     </div>

@@ -19,9 +19,10 @@ export class MessagesService {
     }
 
     private add(msgType: string, message: string): void {
-        const time = this.timestamp();
-
-        this[`${msgType}Messages`].push({time}, {body: message});
+        this[`${msgType}Messages`].push({
+            time: this.timestamp(),
+            body: message,
+        });
     }
 
     public log(msgType: string, message: string): void {
