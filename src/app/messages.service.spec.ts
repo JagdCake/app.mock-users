@@ -9,4 +9,12 @@ describe('MessagesService', () => {
         const service: MessagesService = TestBed.get(MessagesService);
         expect(service).toBeTruthy();
     });
+
+    it('should throw an error if a message type is unsupported', () => {
+        const service: MessagesService = TestBed.get(MessagesService);
+
+        console.error = jasmine.createSpy('error');
+        service.log('', 'message');
+        expect(console.error).toHaveBeenCalledWith('Unsupported message type');
+    });
 });
