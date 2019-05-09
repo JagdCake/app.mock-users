@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { UserFormComponent } from './user-form.component';
@@ -13,7 +13,7 @@ describe('UserFormComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 RouterTestingModule,
-                HttpClientModule,
+                HttpClientTestingModule,
                 ReactiveFormsModule,
             ],
           declarations: [ UserFormComponent ]
